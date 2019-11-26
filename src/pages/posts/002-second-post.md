@@ -2,7 +2,6 @@
 title: "Second Post - Gatsby"
 date: 2019-11-10 07:00:00
 author: "Vaughna Wells"
-path: "/second-post"
 image: "../../images/GraphQL.jpg"
 tags:
 - code

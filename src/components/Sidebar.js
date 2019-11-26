@@ -16,7 +16,6 @@ const Sidebar = () => {
             id
             frontmatter {
               title
-              path
               image {
                 childImageSharp {
                   fluid(maxWidth: 300) {
@@ -24,6 +23,9 @@ const Sidebar = () => {
                   }
                 }
               }
+            }
+            fields{
+              slug
             }
           }
         }
@@ -71,17 +73,18 @@ const Sidebar = () => {
           </CardTitle>
           <div>
             {edges.map(({ node }) => {
-              const {id} = node
-              const { path, title } = node.frontmatter
+              const { id } = node
+              const {slug} = node.fields
+              const { title } = node.frontmatter
               const { fluid } = node.frontmatter.image.childImageSharp
               return (
                 <Card key={id}>
-                  <Link to={path}>
+                  <Link to={slug}>
                     <Img className="card-image-top" fluid={fluid} />
                   </Link>
                   <CardBody>
                     <CardTitle>
-                      <Link to={path}>{title}</Link>
+                      <Link to={slug}>{title}</Link>
                     </CardTitle>
                   </CardBody>
                 </Card>

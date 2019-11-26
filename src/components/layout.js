@@ -19,7 +19,6 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <script src="https://use.fontawesome.com/f8b25763db.js"></script>
       <Header siteTitle={data.site.siteMetadata.title} />
       <div className="container" id="content">
         <main>{children}</main>

@@ -18,7 +18,6 @@ const IndexPage = () => {
               date(formatString: "MMM Do YYYY")
               author
               tags
-              path
               image {
                 childImageSharp {
                   fluid(maxWidth: 600) {
@@ -26,6 +25,9 @@ const IndexPage = () => {
                   }
                 }
               }
+            }
+            fields {
+              slug
             }
             excerpt
           }
@@ -43,13 +45,14 @@ const IndexPage = () => {
           <Col md="8">
             {edges.map(({ node }) => {
               const { title, author, path, date, tags } = node.frontmatter
-              const { excerpt } = node
+              const { excerpt, id } = node
               const { fluid } = node.frontmatter.image.childImageSharp
               return (
                 <Post
+                  key={id}
                   title={title}
                   author={author}
-                  path={path}
+                  slug={node.fields.slug}
                   date={date}
                   body={excerpt}
                   fluid={fluid}

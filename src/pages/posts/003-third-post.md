@@ -2,7 +2,6 @@
 title: "Third Post - CSS"
 date: 2019-11-11 07:00:00
 author: "Sam Thoyre"
-path: "/third-post"
 image: "../../images/CSS.jpg"
 tags:
 - design
