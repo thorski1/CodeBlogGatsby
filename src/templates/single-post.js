@@ -13,6 +13,7 @@ import {
   faGoogle,
   faLinkedin,
 } from "@fortawesome/free-brands-svg-icons"
+import {DiscussionEmbed} from 'disqus-react'
 
 export const postQuery = graphql`
   query blogPostBySlug($slug: String!, $imageUrl: String!) {
@@ -48,6 +49,12 @@ const SinglePost = ({ data, pageContext }) => {
   const author = authors.find(x => x.name === post.author)
   const { title, date, tags } = post
   const baseUrl = "https://gatsbytutorial.co.uk/"
+  const disqusShortname = "coding-blog-3"
+  const disqusConfig = {
+    identifier: data.markdownRemark.id,
+    title,
+    url: baseUrl + pageContext.slug
+  }
   return (
     <Layout
       pageTitle={title}
@@ -124,6 +131,7 @@ const SinglePost = ({ data, pageContext }) => {
           </li>
         </ul>
       </div>
+      <DiscussionEmbed shortname={disqusShortname} config={disqusConfig}/>
     </Layout>
   )
 }
