@@ -1,8 +1,9 @@
 ---
-title: "First Post -Introduction"
+title: "First Post - The Evil Empire of Redux"
 date: 2019-11-09 07:00:00
 author: "Sam Thoyre"
 path: "/first-post"
+image: "../../images/ReactRedux.png"
 ---
 
 Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit reprehenderit reiciendis quisquam similique maxime ratione voluptatibus

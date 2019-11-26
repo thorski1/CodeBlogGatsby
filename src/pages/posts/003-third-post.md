@@ -3,6 +3,7 @@ title: "Third Post - CSS"
 date: 2019-11-11 07:00:00
 author: "Sam Thoyre"
 path: "/third-post"
+image: "../../images/CSS.jpg"
 ---
 
 Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit reprehenderit reiciendis quisquam similique maxime ratione voluptatibus
