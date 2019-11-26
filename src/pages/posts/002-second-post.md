@@ -4,6 +4,9 @@ date: 2019-11-10 07:00:00
 author: "Vaughna Wells"
 path: "/second-post"
 image: "../../images/GraphQL.jpg"
+tags:
+- code
+- gatsby
 ---
 
 Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit reprehenderit reiciendis quisquam similique maxime ratione voluptatibus

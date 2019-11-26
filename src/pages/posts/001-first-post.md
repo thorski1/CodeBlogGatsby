@@ -4,6 +4,8 @@ date: 2019-11-09 07:00:00
 author: "Sam Thoyre"
 path: "/first-post"
 image: "../../images/ReactRedux.png"
+tags:
+- code
 ---
 
 Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit reprehenderit reiciendis quisquam similique maxime ratione voluptatibus

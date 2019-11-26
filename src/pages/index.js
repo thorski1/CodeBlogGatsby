@@ -16,6 +16,7 @@ const IndexPage = () => {
               title
               date(formatString: "MMM Do YYYY")
               author
+              tags
               path
               image {
                 childImageSharp {
@@ -38,7 +39,7 @@ const IndexPage = () => {
       <h1>Home Page</h1>
       <div>
         {edges.map(({ node }) => {
-          const { title, author, path, date } = node.frontmatter
+          const { title, author, path, date, tags } = node.frontmatter
           const { excerpt } = node
           const { fluid } = node.frontmatter.image.childImageSharp
           return (
@@ -51,6 +52,7 @@ const IndexPage = () => {
                   date={date}
                   body={excerpt}
                   fluid={fluid}
+                  tags={tags}
                 />
               </Col>
               <Col md="4">
