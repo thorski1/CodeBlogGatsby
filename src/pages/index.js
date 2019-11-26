@@ -3,6 +3,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { graphql, useStaticQuery } from "gatsby"
 import Post from "../components/Post"
+import Sidebar from "../components/Sidebar"
 import { Row, Col } from "reactstrap"
 
 const IndexPage = () => {
@@ -38,13 +39,13 @@ const IndexPage = () => {
       <SEO title="Home" />
       <h1>Home Page</h1>
       <div>
-        {edges.map(({ node }) => {
-          const { title, author, path, date, tags } = node.frontmatter
-          const { excerpt } = node
-          const { fluid } = node.frontmatter.image.childImageSharp
-          return (
-            <Row>
-              <Col md="8">
+        <Row>
+          <Col md="8">
+            {edges.map(({ node }) => {
+              const { title, author, path, date, tags } = node.frontmatter
+              const { excerpt } = node
+              const { fluid } = node.frontmatter.image.childImageSharp
+              return (
                 <Post
                   title={title}
                   author={author}
@@ -54,19 +55,13 @@ const IndexPage = () => {
                   fluid={fluid}
                   tags={tags}
                 />
-              </Col>
-              <Col md="4">
-                <div
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    backgroundColor: "rgba(0,0,0,0.4",
-                  }}
-                ></div>
-              </Col>
-            </Row>
-          )
-        })}
+              )
+            })}
+          </Col>
+          <Col md="4">
+            <Sidebar />
+          </Col>
+        </Row>
       </div>
     </Layout>
   )
