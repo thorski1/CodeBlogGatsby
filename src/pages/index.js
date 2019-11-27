@@ -7,7 +7,10 @@ import Post from "../components/Post"
 const IndexPage = () => {
   const data = useStaticQuery(graphql`
     {
-      allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+      allMarkdownRemark(
+        sort: { fields: [frontmatter___date], order: DESC }
+        limit: 2
+      ) {
         edges {
           node {
             id
@@ -38,25 +41,23 @@ const IndexPage = () => {
     <Layout pageTitle="CodeBlog">
       <SEO title="Home" />
       <div>
-       
-            {edges.map(({ node }) => {
-              const { title, author, path, date, tags } = node.frontmatter
-              const { excerpt, id } = node
-              const { fluid } = node.frontmatter.image.childImageSharp
-              return (
-                <Post
-                  key={id}
-                  title={title}
-                  author={author}
-                  slug={node.fields.slug}
-                  date={date}
-                  body={excerpt}
-                  fluid={fluid}
-                  tags={tags}
-                />
-              )
-            })}
-         
+        {edges.map(({ node }) => {
+          const { title, author, date, tags } = node.frontmatter
+          const { excerpt, id } = node
+          const { fluid } = node.frontmatter.image.childImageSharp
+          return (
+            <Post
+              key={id}
+              title={title}
+              author={author}
+              slug={node.fields.slug}
+              date={date}
+              body={excerpt}
+              fluid={fluid}
+              tags={tags}
+            />
+          )
+        })}
       </div>
     </Layout>
   )

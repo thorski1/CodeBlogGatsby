@@ -20,6 +20,8 @@ exports.createPages = ({ actions, graphql }) => {
   const templates = {
     singlePost: path.resolve("src/templates/single-post.js"),
     tagsPage: path.resolve("src/templates/tags-page.js"),
+    tagPosts: path.resolve("src/templates/tag-posts.js"),
+    postList: path.resolve("src/templates/post-list.js"),
   }
 
   return graphql(`
@@ -55,7 +57,7 @@ exports.createPages = ({ actions, graphql }) => {
         },
       })
     })
-// Get all tags
+    // Get all tags
     let tags = []
     _.each(posts, edge => {
       if (_.get(edge, "node.frontmatter.tags")) {
@@ -69,14 +71,44 @@ exports.createPages = ({ actions, graphql }) => {
     })
 
     tags = _.uniq(tags)
-// Create tags page
+    // Create tags page
     createPage({
       path: "/tags",
       component: templates.tagsPage,
       context: {
         tags,
-        tagPostCounts
-      }
+        tagPostCounts,
+      },
+    })
+
+    // Create tag posts pages
+    tags.forEach(tag => {
+      createPage({
+        path: `/tag/${slugify(tag)}`,
+        component: templates.tagPosts,
+        context: {
+          tag,
+        },
+      })
+    })
+    const postsPerPage = 2
+    const numberOfPages = Math.ceil(posts.length / postsPerPage)
+
+    Array.from({ length: numberOfPages }).forEach((_, index) => {
+      const isFirstPage = index === 0
+      const currentPage = index + 1
+
+      if (isFirstPage) return
+
+      createPage({
+        path: `/page/${currentPage}`,
+        component: templates.postList,
+        context: {
+          limit: postsPerPage,
+          skip: index * postsPerPage,
+          currentPage
+        },
+      })
     })
   })
 }
