@@ -39,8 +39,10 @@ const IndexPage = () => {
     }
   `)
   const { edges } = data.allMarkdownRemark
-  const postsPerPage = 2;
-  let numberOfPages = Math.ceil(data.allMarkdownRemark.totalCount / postsPerPage)
+  const postsPerPage = 2
+  let numberOfPages = Math.ceil(
+    data.allMarkdownRemark.totalCount / postsPerPage
+  )
   return (
     <Layout pageTitle="CodeBlog">
       <SEO title="Home" />
